@@ -29,6 +29,7 @@ async def get_all_users(
 @router.post(
     path='/signup',
     summary='Создание пользователя',
+    status_code=status.HTTP_201_CREATED,
     response_model=schemas.User,
     responses={403: {'model': schemas.ForbiddenAction}}
 )

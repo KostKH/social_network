@@ -1,8 +1,8 @@
 """Initial
 
-Revision ID: d51aa4ce842b
+Revision ID: 107971248d3f
 Revises: 
-Create Date: 2023-07-26 12:05:13.811297
+Create Date: 2023-07-28 12:17:04.240546
 
 """
 import sqlalchemy as sa
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 from alembic import op
 
 # revision identifiers, used by Alembic.
-revision = 'd51aa4ce842b'
+revision = '107971248d3f'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -37,15 +37,15 @@ def upgrade() -> None:
     sa.Column('update_timestamp', sa.Integer(), nullable=True),
     sa.Column('like_count', sa.Integer(), nullable=True),
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.ForeignKeyConstraint(['author_id'], ['user.id'], ),
+    sa.ForeignKeyConstraint(['author_id'], ['user.id'], ondelete='CASCADE'),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('like',
     sa.Column('post_id', sa.Integer(), nullable=False),
     sa.Column('liker_id', sa.Integer(), nullable=False),
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.ForeignKeyConstraint(['liker_id'], ['user.id'], ),
-    sa.ForeignKeyConstraint(['post_id'], ['post.id'], ),
+    sa.ForeignKeyConstraint(['liker_id'], ['user.id'], ondelete='CASCADE'),
+    sa.ForeignKeyConstraint(['post_id'], ['post.id'], ondelete='CASCADE'),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('post_id', 'liker_id')
     )

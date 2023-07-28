@@ -12,7 +12,7 @@ main_router.include_router(
 )
 main_router.include_router(
     router=user.router,
-    prefix='/user',
+    prefix='/users',
     tags=['Users']
 )
 main_router.include_router(

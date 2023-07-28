@@ -25,6 +25,7 @@ async def get_all_posts(
 @router.post(
     path='/',
     summary='Разместить пост',
+    status_code=status.HTTP_201_CREATED,
     response_model=schemas.Post,)
 async def create_post(
     new_post: schemas.PostBase,

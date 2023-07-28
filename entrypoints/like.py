@@ -15,6 +15,7 @@ router = APIRouter()
 @router.post(
     path='/{post_id}',
     summary='Поставить лайк',
+    status_code=status.HTTP_201_CREATED,
     responses={
         403: {'model': schemas.ForbiddenAction},
         404: {'model': schemas.NotFound}},
