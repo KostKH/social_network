@@ -56,6 +56,10 @@ JWT_ALGORITHM=HS256
 JWT_EFFECT_SECONDS=86400
 
 ```
+- Запустите миграции:
+```
+alembic upgrade head
+```
 - Запустите приложение:
 ```
 uvicorn main:app
